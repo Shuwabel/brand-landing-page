@@ -1,0 +1,90 @@
+brand named 
+ANCIENTIKA 
+
+––––––––––––––––––––
+BRAND CONTEXT
+––––––––––––––––––––
+Brand name: Ancientika  
+Positioning: Contemporary minimal wear   
+Comparable brands: COS, Zara Studio, A Day’s March  
+
+Brand essence:
+- Simple
+- Cozy
+- Minimal
+- Quiet confidence
+- Premium through restraint
+
+Core philosophy:
+“Premium, defined by less.”
+
+Brand inspiration:
+Ancientika blends Scandinavian minimalism, Japanese craftsmanship, movement, and lifestyle. 
+
+––––––––––––––––––––
+TYPOGRAPHY
+––––––––––––––––––––
+Logo / brand font:
+- PorshaRichela.ttf (logo + select display use only)
+
+Text system rules:
+
+- No decorative fonts outside brand use
+
+––––––––––––––––––––
+COLOR SYSTEM
+––––––––––––––––––––
+Primary colors:
+- Mocha brown
+- Black
+- Beige
+
+Rules:
+- Define semantic color tokens (primary, surface, text, border, accent)
+- No default purple gradients
+
+- Contrast must meet accessibility standards
+
+––––––––––––––––––––
+COPY DIRECTION (USE AS INSPIRATION, NOT VERBATIM)
+––––––––––––––––––––
+- “Where contemporary minimalism meets modern elegance.”
+- “Designed with intention. Built to last.”
+- “Quiet confidence for the modern man.”
+
+Copy rules:
+- Avoid vague marketing language
+- No em-dash overuse
+- No fake testimonials
+- No generic AI names or stock faces
+- Every sentence must earn its place
+
+––––––––––––––––––––
+DESIGN SYSTEM FIRST (NON-NEGOTIABLE)
+––––––––––––––––––––
+ANIMATION & INTERACTION
+––––––––––––––––––––
+
+
+Libraries can be used for inspo but you are free to use something better : 
+- anime.js
+- uiverse.io
+- ui.shadcn.com
+
+Consider Using UX behaviors:
+- Skeleton screens for data-heavy sections
+- Loading states for async actions
+- Progress indicators on buttons
+- Functional drawers, carousels, toggles
+- Breadcrumbs where applicable
+
+Special integrations:
+- Loadify (cinematic intro, app-like)
+- Section Store custom sections
+- Kiwi Size Chart (size confidence)
+
+––––––––––––––––––––
+
+
+refine my text, i want to input this into lovable and i would need a fullstack ecommerce website that can be integrated seamlessly in shopify  
+

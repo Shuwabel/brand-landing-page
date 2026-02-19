@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fcf9f8;
+  --foreground: #171717;
+  --primary: #f5f5dc;
+  --secondary: #583e37;
+  --accent: #af6e4d;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #fcf9f8;
+    --foreground: #171717;
+    --primary: #f5f5dc;
+    --secondary: #583e37;
+    --accent: #af6e4d;
+  }
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+.fontozean {
+  font-family: var(--font-ozean), sans-serif;
+}
+
+.fontmelo {
+  font-family: var(--font-melodrama), sans-serif;
+}
+
+.fontmelobold {
+  font-family: var(--font-melodrama), sans-serif;
+  font-weight: bold;
+}
+
+.clash {
+  font-family: var(--font-clash), sans-serif;
+}
+
+.porsha {
+  font-family: var(--font-porsha), sans-serif;
+}
+
+.masonry-grid {
+  display: flex;
+  margin-left: -16px;
+  /* gutter size offset */
+  width: auto;
+}
+
+.masonry-grid_column {
+  padding-left: 16px;
+  /* gutter size */
+  background-clip: padding-box;
+}
+
+.masonry-item {
+  margin-bottom: 16px;
+}
