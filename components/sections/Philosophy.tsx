@@ -38,7 +38,7 @@ const Philosophy = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             Our Philosophy
           </motion.p>
@@ -47,7 +47,7 @@ const Philosophy = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             The Luxury of Less
           </motion.h2>
@@ -56,7 +56,7 @@ const Philosophy = () => {
             initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             A study in texture, form, and time. Our garments are crafted with
             precision and care — designed to transcend trends and last beyond
@@ -74,7 +74,7 @@ const Philosophy = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: i * 0.15 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, amount: 0.1 }}
               className={`relative ${item.size} overflow-hidden group`}
             >
               <Image
@@ -99,7 +99,7 @@ const Philosophy = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: i * 0.15 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, amount: 0.1 }}
               className={`relative ${item.size} overflow-hidden group`}
             >
               <Image
