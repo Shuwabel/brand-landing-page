@@ -65,10 +65,7 @@ export default function Home() {
           </main>
         </div>
 
-        {/* Sticky Footer Reveal */}
-        <div className="sticky bottom-0 z-0 w-full h-auto">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </>
   );

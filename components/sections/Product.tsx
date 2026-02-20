@@ -90,6 +90,7 @@ const Product = () => {
             src="/img16.jpg"
             alt="ancientika editorial"
             fill
+            sizes="100vw"
             className="object-cover"
           />
         </motion.div>
@@ -156,6 +157,7 @@ const Product = () => {
                     src={hotspots[activeIndex].img}
                     alt={hotspots[activeIndex].title}
                     fill
+                    sizes="288px"
                     className="object-cover"
                   />
                 </div>

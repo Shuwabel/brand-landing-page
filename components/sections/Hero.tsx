@@ -64,6 +64,7 @@ const Hero = () => {
               src="/img3.jpg"
               alt="ancientika editorial"
               fill
+              sizes="(max-width: 640px) 100vw, 50vw"
               priority
               className="object-top object-cover"
             />
@@ -86,7 +87,7 @@ const Hero = () => {
             </motion.span>
 
             <BlurRevealText>
-              <span className="block porsha font-black text-8xl max-sm:text-6xl uppercase cursor-default leading-none">
+              <span className="block porsha font-black text-[20vw] sm:text-[10vw] lg:text-[7vw] xl:text-8xl uppercase cursor-default leading-none">
                 refined.
               </span>
             </BlurRevealText>

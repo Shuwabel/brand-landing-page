@@ -1,12 +1,13 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 const galleryItems = [
-  { src: "/img5.jpg", label: "The Edit", size: "w-[400px] h-80 max-sm:w-full max-sm:h-52" },
-  { src: "/img3.jpg", label: "Essentials", size: "w-[520px] h-72 max-sm:w-full max-sm:h-52" },
-  { src: "/img2.jpg", label: "Studio", size: "w-[520px] h-72 max-sm:w-full max-sm:h-52" },
-  { src: "/img6.jpg", label: "Form", size: "w-[400px] h-80 max-sm:w-full max-sm:h-52" },
+  { src: "/img5.jpg", label: "The Edit" },
+  { src: "/img3.jpg", label: "Essentials" },
+  { src: "/img2.jpg", label: "Studio" },
+  { src: "/img6.jpg", label: "Form" },
 ];
 
 const Philosophy = () => {
@@ -38,7 +39,7 @@ const Philosophy = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true }}
           >
             Our Philosophy
           </motion.p>
@@ -47,7 +48,7 @@ const Philosophy = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true }}
           >
             The Luxury of Less
           </motion.h2>
@@ -56,7 +57,7 @@ const Philosophy = () => {
             initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true }}
           >
             A study in texture, form, and time. Our garments are crafted with
             precision and care — designed to transcend trends and last beyond
@@ -66,53 +67,61 @@ const Philosophy = () => {
       </div>
 
       {/* Gallery Grid */}
-      <div className="flex flex-col gap-5 px-8 max-sm:px-4">
-        <div className="flex items-end max-sm:flex-col gap-5">
+      <div className="flex flex-col gap-5 px-8 max-sm:px-4 w-full items-center">
+        <div className="flex items-end max-sm:items-end justify-center gap-5 max-sm:gap-3 w-full">
           {galleryItems.slice(0, 2).map((item, i) => (
             <motion.div
               key={item.label}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: i * 0.15 }}
-              viewport={{ once: true, amount: 0.1 }}
-              className={`relative ${item.size} overflow-hidden group`}
+              transition={{ duration: 0.7, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className={`relative overflow-hidden group ${i === 0
+                ? "w-[400px] h-80 max-sm:w-[45%] max-sm:h-auto max-sm:aspect-[5/4]"
+                : "w-[520px] h-72 max-sm:w-[55%] max-sm:h-auto max-sm:aspect-[16/9]"
+                }`}
             >
               <Image
                 src={item.src}
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                fill
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                width={800}
+                height={800}
+                sizes="(max-width: 640px) 50vw, 520px"
                 alt={item.label}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 max-sm:opacity-100 transition-opacity duration-500">
                 <div className="absolute bottom-4 left-4 text-white">
                   <p className="text-sm clash tracking-wider">{item.label}</p>
                 </div>
-
               </div>
             </motion.div>
           ))}
         </div>
-        <div className="flex items-start max-sm:flex-col gap-5">
+        <div className="flex items-start max-sm:items-start justify-center gap-5 max-sm:gap-3 w-full">
           {galleryItems.slice(2, 4).map((item, i) => (
             <motion.div
               key={item.label}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: i * 0.15 }}
-              viewport={{ once: true, amount: 0.1 }}
-              className={`relative ${item.size} overflow-hidden group`}
+              transition={{ duration: 0.7, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className={`relative overflow-hidden group ${i === 0
+                ? "w-[520px] h-72 max-sm:w-[55%] max-sm:h-auto max-sm:aspect-[16/9]"
+                : "w-[400px] h-80 max-sm:w-[45%] max-sm:h-auto max-sm:aspect-[5/4]"
+                }`}
             >
               <Image
                 src={item.src}
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                fill
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                width={800}
+                height={800}
+                sizes="(max-width: 640px) 50vw, 520px"
                 alt={item.label}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 max-sm:opacity-100 transition-opacity duration-500">
                 <div className="absolute bottom-4 left-4 text-white">
                   <p className="text-sm clash tracking-wider">{item.label}</p>
                 </div>
-
               </div>
             </motion.div>
           ))}

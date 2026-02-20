@@ -87,19 +87,27 @@ const Poster = () => {
           ancientika
         </motion.h2>
 
-        <div className="absolute top-20 right-0 p-12 text-black text-right flex flex-col items-end gap-1">
-          <div className="relative w-24 h-24 max-sm:w-16 max-sm:h-16">
+        {/* Logo + Edition: below text on mobile, top-right on desktop */}
+        <motion.div
+          className="z-10 flex flex-col items-center gap-2 mt-6 sm:absolute sm:top-20 sm:right-0 sm:p-12 sm:items-end sm:mt-0"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative w-16 h-16 sm:w-24 sm:h-24">
             <Image
               src="/ANCIENTIKA%20MAIN%20LOGO.png"
               alt="ancientika"
               fill
+              sizes="(max-width: 640px) 64px, 96px"
               className="object-contain"
             />
           </div>
-          <p className="clash text-xs uppercase tracking-[0.2em] opacity-50">
+          <p className="clash text-xs uppercase tracking-[0.2em] opacity-50 text-white sm:text-black">
             Edition 01
           </p>
-        </div>
+        </motion.div>
 
         <div className="absolute inset-0 pointer-events-none">
           {images.map((src, i) => (
@@ -115,6 +123,7 @@ const Poster = () => {
                 src={src}
                 alt=""
                 fill
+                sizes="(max-width: 640px) 144px, 208px"
                 className="object-cover shadow-xl"
               />
             </div>
