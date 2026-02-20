@@ -93,6 +93,7 @@ const Origin = () => {
             src="/img4.jpg"
             alt=""
             fill
+            sizes="100vw"
             className="object-cover"
           />
         </div>
@@ -111,6 +112,7 @@ const Origin = () => {
           alt="ancientika craft"
           className="object-cover object-top hover:scale-105 transition-transform duration-1000"
           fill
+          sizes="(max-width: 1024px) 100vw, 896px"
         />
         <div className="absolute inset-0 bg-black/20" />
       </motion.div>

@@ -73,7 +73,7 @@ const Intro = ({ onComplete }: IntroProps) => {
       <div className="circle w-16 h-16 bg-background rounded-full opacity-0 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 
       <div className="logo w-16 h-16 fixed invert filter opacity-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <Image src="/Logo.png" alt="Logo" fill className="object-contain" />
+        <Image src="/Logo.png" alt="Logo" fill sizes="64px" className="object-contain" />
       </div>
     </div>
   );
