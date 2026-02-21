@@ -90,7 +90,7 @@ const Product = () => {
             src="/img16.jpg"
             alt="ancientika editorial"
             fill
-            sizes="100vw"
+            sizes="(max-width: 640px) 100vw, 50vw"
             className="object-cover"
           />
         </motion.div>
