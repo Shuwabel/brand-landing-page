@@ -91,6 +91,8 @@ const CTA = () => {
           type="email"
           name="email"
           required
+          aria-label="Email Address"
+          autoComplete="email"
           placeholder="Enter your email"
           className="border-b border-foreground/20 bg-transparent outline-none px-1 py-2 text-sm placeholder:text-foreground/30 focus:border-accent transition-colors duration-300"
         />

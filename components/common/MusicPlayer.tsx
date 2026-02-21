@@ -24,8 +24,9 @@ const MusicPlayer = () => {
       audio.play().then(() => {
         gsap.to(audio, { volume: targetVolume, duration: 2 });
         setIsPlaying(true);
-      }).catch((err) => {
-        console.error("Autoplay blocked:", err);
+      }).catch(() => {
+        // Silently ignore autoplay restrictions so the console stays clean.
+        // The user can still play the music manually via the button.
       });
     };
 

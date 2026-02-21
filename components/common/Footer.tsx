@@ -59,6 +59,7 @@ const Footer = () => {
                               href="https://instagram.com/ancientika"
                               target="_blank"
                               rel="noopener noreferrer"
+                              aria-label="Visit our Instagram"
                               className="hover:text-accent transition-colors duration-300"
                             >
                               <PiInstagramLogoBold />
@@ -67,6 +68,7 @@ const Footer = () => {
                               href="https://tiktok.com/@ancientika"
                               target="_blank"
                               rel="noopener noreferrer"
+                              aria-label="Visit our TikTok"
                               className="hover:text-accent transition-colors duration-300"
                             >
                               <PiTiktokLogoBold />
