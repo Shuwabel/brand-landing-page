@@ -2,16 +2,41 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { Resend } from "resend";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Create a new ratelimiter, allowing 3 requests per 5 minutes
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(3, "5 m"),
+  analytics: true,
+});
+
 export async function POST(req: Request) {
   try {
+    // Basic IP detection for rate limiting 
+    // In production (Vercel), we could use req.headers.get("x-forwarded-for")
+    const ip = req.headers.get("x-forwarded-for") ?? "127.0.0.1";
+
+    // Check rate limit
+    const { success } = await ratelimit.limit(`waitlist_ratelimit_${ip}`);
+
+    if (!success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const { email } = await req.json();
 
-    if (!email) {
+    // Basic email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || typeof email !== 'string' || !emailRegex.test(email) || email.length > 254) {
       return NextResponse.json(
-        { error: "Email is required" },
+        { error: "A valid email address is required." },
         { status: 400 }
       );
     }
@@ -164,11 +189,11 @@ export async function POST(req: Request) {
       { status: 201 }
     );
   } catch (error: any) {
+    // Log the internal error object for debugging, but hide it from the client
     console.error("WAITLIST API ERROR:", error);
     return NextResponse.json(
-      { error: error.message || "Server error" },
+      { error: "An unexpected server error occurred." },
       { status: 500 }
     );
   }
 }
-
