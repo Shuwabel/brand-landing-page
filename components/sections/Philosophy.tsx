@@ -29,6 +29,7 @@ const Philosophy = () => {
             src="/Logo.png"
             className="object-contain"
             fill
+            sizes="56px"
             alt="ancientika"
           />
         </motion.div>
