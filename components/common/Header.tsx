@@ -39,6 +39,7 @@ const Header = () => {
               src="/Logo.png"
               alt="ancientika"
               fill
+              sizes="32px"
               className="object-contain"
             />
           </button>
