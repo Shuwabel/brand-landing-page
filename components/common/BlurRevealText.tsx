@@ -41,7 +41,7 @@ export default function BlurRevealText({ children }: BlurRevealTextProps) {
   }, { scope: textRef });
 
   return (
-    <div ref={textRef} className="overflow-hidden">
+    <div ref={textRef} className="overflow-hidden" role="group">
       {children}
     </div>
   );
