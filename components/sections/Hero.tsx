@@ -66,6 +66,7 @@ const Hero = () => {
               fill
               sizes="(max-width: 640px) 100vw, 50vw"
               priority
+              loading="eager"
               className="object-top object-cover"
             />
           </motion.div>

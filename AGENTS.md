@@ -34,7 +34,13 @@
 2. **Server vs. Client Components:** Default to Server Components for performance. Use the `"use client"` directive only when utilizing hooks, state, or browser APIs (like GSAP or Lenis).
 3. **Database Operations:** Use the initialized Supabase client in `/lib/supabase.ts` for database interactions. 
 4. **Styling:** Use Tailwind utility classes. If complex or conditional styles are needed, abstract them cleanly or use `clsx`/`tailwind-merge`.
-5. **Living Document:** This `guidelines.md` file is a living document. Whenever we add new tech, change workflows, or discover new best practices, this file must be updated immediately.
+5. **Next.js & Performance:**
+   - Any `next/image` using the `fill` property **MUST** include a `sizes` prop.
+   - The Largest Contentful Paint (LCP) image (e.g., Hero images) **MUST** include both `priority` and `loading="eager"` attributes.
+6. **Accessibility (a11y):**
+   - All icon-only interactive elements (links, buttons) **MUST** have descriptive `aria-label` attributes.
+   - All form inputs (like email waitlists) **MUST** include appropriate `autoComplete` attributes (e.g., `autoComplete="email"`).
+7. **Living Document:** This `AGENTS.md` file is a living document. Whenever we add new tech, change workflows, or discover new best practices, this file must be updated immediately.
 
 ## AI Agent Instructions
 If you are an AI assistant working in this repository:
