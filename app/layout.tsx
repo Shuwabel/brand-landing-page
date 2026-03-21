@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const porsha = localFont({
   src: "./fonts/porsha/PorshaRichela.ttf",
@@ -48,6 +49,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${porsha.variable} ${melodrama.variable} ${ozean.variable} ${clash.variable} antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
