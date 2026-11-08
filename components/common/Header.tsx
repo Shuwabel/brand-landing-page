@@ -1,4 +1,5 @@
 "use client";
+import { brand } from "@/lib/brand";
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -24,10 +25,9 @@ const Header = () => {
           {/* Logo */}
           <button
             onClick={() => {
-              // @ts-ignore
-              if (window.lenis) {
-                // @ts-ignore
-                window.lenis.scrollTo(0);
+              const lenis = (window as unknown as { lenis?: { scrollTo: (y: number) => void } }).lenis;
+              if (lenis) {
+                lenis.scrollTo(0);
               } else {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
@@ -36,8 +36,8 @@ const Header = () => {
             aria-label="Scroll to top"
           >
             <Image
-              src="/Logo.png"
-              alt="ancientika"
+              src="/logo.svg"
+              alt={brand.name}
               fill
               sizes="32px"
               className="object-contain"

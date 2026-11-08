@@ -1,4 +1,5 @@
 "use client";
+import { brand } from "@/lib/brand";
 import React, { useEffect, useRef, useState } from "react";
 import { footerLinks } from "@/components/utils/constants/index";
 import Link from "next/link";
@@ -53,10 +54,11 @@ const Footer = () => {
                     >
                       {link.name === "Contact Us" ? (
                         <div className="flex items-center gap-3">
-                          <span className="text-neutral-800">Contact us on</span>
+                          <a href={`mailto:${brand.contactEmail}`} className="text-neutral-800 hover:text-accent transition-colors duration-300">Email us</a>
                           <div className="flex gap-3 text-lg">
+                            {brand.instagram && (
                             <a
-                              href="https://instagram.com/ancientika"
+                              href={brand.instagram}
                               target="_blank"
                               rel="noopener noreferrer"
                               aria-label="Visit our Instagram"
@@ -64,8 +66,10 @@ const Footer = () => {
                             >
                               <PiInstagramLogoBold />
                             </a>
+                            )}
+                            {brand.tiktok && (
                             <a
-                              href="https://tiktok.com/@ancientika"
+                              href={brand.tiktok}
                               target="_blank"
                               rel="noopener noreferrer"
                               aria-label="Visit our TikTok"
@@ -73,6 +77,7 @@ const Footer = () => {
                             >
                               <PiTiktokLogoBold />
                             </a>
+                            )}
                           </div>
                         </div>
                       ) : (
@@ -93,25 +98,24 @@ const Footer = () => {
               About
             </h2>
             <p className="text-sm text-neutral-700 clash leading-relaxed">
-              Where contemporary minimalism meets modern elegance. Designed with
-              intention, built to last beyond seasons.
+              {brand.tagline} Designed with intention, built to last beyond seasons.
             </p>
           </div>
         </div>
 
         <div className="w-full flex items-center justify-end max-sm:justify-center">
           <p className="text-[10px] text-neutral-500 clash tracking-widest uppercase">
-            &copy; {new Date().getFullYear()} <span className="porsha text-xs normal-case tracking-normal text-neutral-700">ancientika</span>. All rights reserved.
+            &copy; {new Date().getFullYear()} <span className="porsha text-xs normal-case tracking-normal text-neutral-700">{brand.name}</span>. All rights reserved.
           </p>
         </div>
 
         {/* Logo */}
         <div className="w-full text-center flex items-center justify-center overflow-hidden py-4">
           <h1 className="text-[25vw] max-sm:text-[20vw] leading-[0.8] porsha select-none opacity-[0.03] pointer-events-none absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
-            ancientika
+            {brand.name}
           </h1>
           <h1 className="text-[150px] max-sm:text-[60px] leading-tight porsha relative z-10">
-            ancientika
+            {brand.name}
           </h1>
         </div>
       </section>

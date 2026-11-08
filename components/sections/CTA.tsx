@@ -1,45 +1,25 @@
 "use client";
+import { brand } from "@/lib/brand";
 import { motion } from "framer-motion";
 import React, { useRef, useState } from "react";
 
 const CTA = () => {
-  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (loading) return;
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const email = formData.get("email") as string;
+    const formData = new FormData(e.currentTarget);
+    const email = String(formData.get("email") ?? "").trim();
     if (!email) return;
 
-    setLoading(true);
-    setMessage("");
-
-    try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        setMessage(data.message);
-        form.reset();
-      } else {
-        setMessage(data.error || "Something went wrong");
-      }
-    } catch (err) {
-      console.error(err);
-      setMessage("Failed to send request");
-    } finally {
-      setLoading(false);
-    }
+    // No backend or API keys: open the visitor's email app addressed to the brand inbox.
+    const subject = encodeURIComponent("Early access request");
+    const body = encodeURIComponent(`Please add me to the early access list: ${email}`);
+    window.location.href = `mailto:${brand.contactEmail}?subject=${subject}&body=${body}`;
+    setMessage("Opening your email app to send your request.");
+    e.currentTarget.reset();
   };
 
   return (
@@ -64,7 +44,7 @@ const CTA = () => {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        Join the Waitlist
+        Request Early Access
       </motion.h2>
 
       <motion.p
@@ -98,13 +78,9 @@ const CTA = () => {
         />
         <button
           type="submit"
-          disabled={loading}
-          className={`w-full bg-secondary text-white text-sm py-3 tracking-wider uppercase transition-all duration-300 ease-out hover:bg-accent ${loading
-            ? "opacity-60 cursor-not-allowed"
-            : "cursor-pointer hover:tracking-widest"
-            }`}
+          className={`w-full bg-secondary text-white text-sm py-3 tracking-wider uppercase transition-all duration-300 ease-out hover:bg-accent cursor-pointer hover:tracking-widest`}
         >
-          {loading ? "Joining..." : "Join Now"}
+          Request Access
         </button>
         {message && (
           <motion.p
