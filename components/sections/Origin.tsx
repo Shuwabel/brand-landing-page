@@ -1,4 +1,5 @@
 "use client";
+import { brand } from "@/lib/brand";
 import React, { useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -109,7 +110,7 @@ const Origin = () => {
       >
         <Image
           src="/img4.jpg"
-          alt="ancientika craft"
+          alt={`${brand.name} craft`}
           className="object-cover object-top hover:scale-105 transition-transform duration-1000"
           fill
           sizes="(max-width: 1024px) 100vw, 896px"
@@ -146,7 +147,7 @@ const Origin = () => {
         >
           A garment is a story of hands and history.{" "}
           <span className="block mt-2 font-light italic">
-            Witness the evolution of an ancientika piece.
+            Witness the evolution of an Okay Brand piece.
           </span>
         </motion.p>
       </div>

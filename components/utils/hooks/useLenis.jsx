@@ -13,8 +13,7 @@ const useLenis = () => {
       smooth: true,
     });
 
-    // @ts-ignore
-    window.lenis = lenis;
+        window.lenis = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 

@@ -1,3 +1,4 @@
+import { brand } from "@/lib/brand";
 import { useState } from "react";
 import Image from "next/image";
 import { PiMinus, PiPlus } from "react-icons/pi";
@@ -88,7 +89,7 @@ const Product = () => {
         >
           <Image
             src="/img16.jpg"
-            alt="ancientika editorial"
+            alt={`${brand.name} editorial`}
             fill
             sizes="(max-width: 640px) 100vw, 50vw"
             className="object-cover"

@@ -1,52 +1,27 @@
 "use client";
+import { brand } from "@/lib/brand";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import BlurRevealText from "../common/BlurRevealText";
 import { motion } from "framer-motion";
 
 const Hero = () => {
-  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (loading) return;
 
     const formData = new FormData(e.currentTarget);
-    const email = formData.get("email") as string;
+    const email = String(formData.get("email") ?? "").trim();
     if (!email) return;
 
-    setLoading(true);
-    setMessage("");
-
-    try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      const text = await res.text();
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        throw new Error("Invalid JSON response");
-      }
-
-      if (!res.ok) {
-        throw new Error(data.error || "Request failed");
-      }
-
-      setMessage(data.message);
-      if (formRef.current) formRef.current.reset();
-    } catch (err) {
-      console.error(err);
-      setMessage(err instanceof Error ? err.message : "Failed to join");
-    } finally {
-      setLoading(false);
-    }
+    // No backend or API keys: open the visitor's email app addressed to the brand inbox.
+    const subject = encodeURIComponent("Early access request");
+    const body = encodeURIComponent(`Please add me to the early access list: ${email}`);
+    window.location.href = `mailto:${brand.contactEmail}?subject=${subject}&body=${body}`;
+    setMessage("Opening your email app to send your request.");
+    e.currentTarget.reset();
   };
 
   return (
@@ -62,7 +37,7 @@ const Hero = () => {
           >
             <Image
               src="/img3.jpg"
-              alt="ancientika editorial"
+              alt={`${brand.name} editorial`}
               fill
               sizes="(max-width: 640px) 100vw, 50vw"
               priority
@@ -126,11 +101,9 @@ const Hero = () => {
             <div className="w-full flex items-center justify-center flex-col gap-3">
               <button
                 type="submit"
-                disabled={loading}
-                className={`w-full bg-secondary text-white text-sm py-3 tracking-wider uppercase transition-all duration-300 ease-out hover:bg-accent ${loading ? "opacity-60 cursor-not-allowed" : "cursor-pointer hover:tracking-widest"
-                  }`}
+                className={`w-full bg-secondary text-white text-sm py-3 tracking-wider uppercase transition-all duration-300 ease-out hover:bg-accent cursor-pointer hover:tracking-widest`}
               >
-                {loading ? "Joining..." : "Join the Waitlist"}
+                Request Early Access
               </button>
               {message && (
                 <motion.p

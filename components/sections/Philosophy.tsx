@@ -1,4 +1,5 @@
 "use client";
+import { brand } from "@/lib/brand";
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -26,11 +27,11 @@ const Philosophy = () => {
           className="relative w-14 h-14"
         >
           <Image
-            src="/Logo.png"
+            src="/logo.svg"
             className="object-contain"
             fill
             sizes="56px"
-            alt="ancientika"
+            alt={brand.name}
           />
         </motion.div>
 

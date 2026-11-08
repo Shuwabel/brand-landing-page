@@ -1,4 +1,5 @@
 "use client";
+import { brand } from "@/lib/brand";
 import React, { useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -84,7 +85,7 @@ const Poster = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          ancientika
+          {brand.name}
         </motion.h2>
 
         {/* Logo + Edition: below text on mobile, top-right on desktop */}
@@ -97,8 +98,8 @@ const Poster = () => {
         >
           <div className="relative w-16 h-16 sm:w-24 sm:h-24">
             <Image
-              src="/ANCIENTIKA%20MAIN%20LOGO.png"
-              alt="ancientika"
+              src="/logo.svg"
+              alt={brand.name}
               fill
               sizes="(max-width: 640px) 64px, 96px"
               className="object-contain"

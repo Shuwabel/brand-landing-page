@@ -1,3 +1,4 @@
+import { brand } from "@/lib/brand";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -36,9 +37,8 @@ const clash = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "ancientika",
-  description:
-    "ancientika is where contemporary minimalism meets modern elegance. We craft sophisticated menswear defined by clean lines, refined details, and timeless restraint. Our pieces blend sleek design with classic refinement, creating garments that feel both current and enduring. Discover a wardrobe that embodies effortless style and modern sophistication with ancientika.",
+  title: brand.name,
+  description: brand.description,
 };
 
 export default function RootLayout({
