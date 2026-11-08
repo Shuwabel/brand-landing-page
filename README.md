@@ -1,76 +1,45 @@
-# ancientika
+# Brand Landing Page
 
-**ancientika** is where contemporary minimalism meets modern elegance. This repository contains the immersive waitlist experience for the upcoming ancientika menswear brand, designed with a focus on sophisticated restraint and timeless style.
+An editorial, scroll-driven landing page for a menswear brand. Built with Next.js, GSAP ScrollTrigger and Lenis.
 
-## 🪞 The Vision
+It needs **no API keys, no database and no environment variables**. Early-access requests open the visitor's email app, addressed to the inbox set in `lib/brand.ts`.
 
-ancientika is more than a clothing brand; it is a movement toward intentional design. Our digital presence reflects this philosophy through:
-- **Quiet Confidence:** A minimalist interface that lets the brand narrative breathe.
-- **Refined Detail:** Every animation and interaction is tuned for a premium feel.
-- **Modern Sophistication:** A blend of sleek, contemporary design elements with classic refinement.
+## The page
 
-## 🚀 Key Features
+Six chapters, each behaving differently so the scroll keeps surprising:
 
-- **Immersive Introduction:** A dual-layer GSAP reveal sequence that wipes the screen to reveal the main content.
-- **Fluid Motion:** Integrated **Lenis** smooth scrolling for a natural, high-end browsing experience.
-- **Micro-interactions:** Blur-reveal text and parallax image effects powered by **GSAP** and **Framer Motion**.
-- **Waitlist Integration:** A seamless, rate-limited subscription form connected to **Supabase** and **Resend**.
-- **Performance Optimized:** Built with the latest Next.js 16.1 App Router and React 19 for industry-leading speed and SEO.
+1. **Cover**: a title page with a kinetic headline and a parallax photo.
+2. **Manifesto**: a full stop on a dark ground; the sentence lights up word by word.
+3. **The cloth**: an asymmetric spread with wipe reveals and a drifting inset.
+4. **The studio**: a collection walked sideways (pinned on desktop, native swipe on phones), every piece labelled with name, fabric and fit.
+5. **The looks**: the peak. The section pins and the scroll turns the pages of a lookbook. Whichever look you stop on regrades the page and is attached to your early-access request.
+6. **Early access**: the one action.
 
-## 🛠️ Tech Stack
+Reduced-motion visitors get the same content with no pinning, no smooth scrolling and no animated entrances.
 
-- **Core:** Next.js 15.1 (App Router), React 19, TypeScript
-- **Styling:** Tailwind CSS v4 (PostCSS)
-- **Animations:** GSAP (GreenSock), Framer Motion
-- **Scroll:** Lenis
-- **Backend:** Supabase (Database & Auth), PostgreSQL
-- **Email:** Resend
-- **Insights:** Vercel Analytics & Speed Insights
+## Make it yours
 
-## ⚙️ Getting Started
+- `lib/brand.ts`: brand name, edition, contact email, social links (leave a URL empty to hide it).
+- `lib/content.ts`: the looks, hotspots and studio labels. The garment names and fabric notes are placeholder copy.
+- `public/logo.svg` and `app/icon.svg`: replace with your logo.
+- `public/photos/`: the photos are free-licence images from [Unsplash](https://unsplash.com). Swap in your own shoot before using this for a real brand.
 
-### Prerequisites
+## Run it
 
-- **Node.js:** 20.x or higher
-- **Supabase Account:** For database operations.
-- **Resend API Key:** For waitlist confirmation emails.
+```bash
+npm install
+npm run dev
+```
 
-### Installation
+Open http://localhost:3000.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Shuwabel/ancientika-modern.git
-   ```
+## Deploy
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+Import the repository on Vercel. No environment variables are required.
 
-3. **Configure Environment Variables:**
-   Create a `.env` file in the root and add your configuration (see `.env.example` if available):
-   ```env
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
-   RESEND_API_KEY=your_resend_api_key
-   FROM_EMAIL=your_sending_email
-   NEXT_PUBLIC_SITE_URL=http://localhost:3000
-   ```
+## Structure
 
-4. **Launch Development Server:**
-   ```bash
-   npm run dev
-   ```
-
-## 📂 Project Structure
-
-- `/app` - Next.js App Router (Pages, API routes, Layouts)
-- `/components/sections` - Core page components (Hero, Philosophy, Product, etc.)
-- `/components/common` - Reusable UI elements and Global components (Header, Footer, Intro)
-- `/lib` - Core utility logic and third-party initializations (Supabase, Resend)
-- `/public` - Static assets, typography, and images.
-
----
-
-*Crafted by [Shuwabel](https://github.com/Shuwabel)*
-
+- `/app`: layout, fonts and global styles
+- `/components`: one component per chapter, plus the folio rail and smooth scroll
+- `/lib`: brand settings, page content, scroll helpers and the shared look state
+- `/public`: logo and photos

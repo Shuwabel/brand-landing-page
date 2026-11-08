@@ -1,44 +1,50 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import type { Metadata, Viewport } from "next";
+import { Archivo, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { brand } from "@/lib/brand";
+import "./globals.css";
 
-const porsha = localFont({
-  src: "./fonts/porsha/PorshaRichela.ttf",
-  variable: "--font-porsha",
+const display = Archivo({
+  subsets: ["latin"],
+  variable: "--font-display",
+  axes: ["wdth"],
+  display: "swap",
 });
 
-const melodrama = localFont({
-  src: [
-    {
-      path: "./fonts/Melodrama/Melodrama-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Melodrama/Melodrama-Bold.otf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-melodrama",
+const text = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-text",
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
-const ozean = localFont({
-  src: "./fonts/Ozean/ozean.ttf",
-  variable: "--font-ozean",
-});
-
-const clash = localFont({
-  src: "./fonts/ClashDisplay/ClashDisplay.ttf",
-  variable: "--font-clash",
-});
+// Vercel sets this automatically on deploys, so no configuration is needed.
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: "ancientika",
-  description:
-    "ancientika is where contemporary minimalism meets modern elegance. We craft sophisticated menswear defined by clean lines, refined details, and timeless restraint. Our pieces blend sleek design with classic refinement, creating garments that feel both current and enduring. Discover a wardrobe that embodies effortless style and modern sophistication with ancientika.",
+  metadataBase: new URL(siteUrl),
+  title: `${brand.name}: ${brand.edition}`,
+  description: brand.description,
+  openGraph: {
+    title: `${brand.name}: ${brand.edition}`,
+    description: brand.description,
+    type: "website",
+    images: [
+      {
+        url: "/photos/cover.jpg",
+        width: 1700,
+        height: 2550,
+        alt: "Two men standing in a dry field under a blue sky",
+      },
+    ],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#e8e5de",
 };
 
 export default function RootLayout({
@@ -47,8 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${porsha.variable} ${melodrama.variable} ${ozean.variable} ${clash.variable} antialiased`}>
+    <html lang="en" className={`${display.variable} ${text.variable}`}>
+      <body>
         {children}
         <Analytics />
         <SpeedInsights />
